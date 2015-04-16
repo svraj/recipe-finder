@@ -1,0 +1,10 @@
+<div class="alert alert-error" ng-show="error">{{errorMessage}}</div>
+<button class="btn btn-mini btn-success" ng-click="fetchRecipeSuggestion()">Get Recipe Suggestion</button>
+<h3>Suggested Recipe</h3>
+<div class="alert alert-info" ng-show="recipe">No Recipes found</div>
+
+<span style="color: blue"> {{recipe.name}} </span>
+
+<div ng-repeat="ingredient in recipe.ingredients" >
+	{{ingredient.item}}-{{ingredient.amount}}-{{ingredient.unit}}
+</div>

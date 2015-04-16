@@ -1,0 +1,32 @@
+<div class="alert alert-error" ng-show="error">
+    {{errorMessage}}
+</div>
+
+<h3>Fridge Items</h3>
+<div class="alert alert-info" ng-show="fridgeItems.length == 0">
+    No Fridge Items found
+</div>
+<table class="table table-bordered table-striped" ng-show="fridgeItems.length > 0">
+    <thead>
+        <tr>
+            <th style="text-align: center;">Name</th>
+            <th style="text-align: center;">Amount</th>
+            <th style="text-align: center;">Unit</th>
+            <th style="text-align: center;">Use By</th>
+            <th style="text-align: center;">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="fridgeItem in fridgeItems | orderBy:predicate">
+            <td>{{fridgeItem.item}}</td>
+            <td>{{fridgeItem.amount}}</td>
+            <td>{{fridgeItem.unit}}</td>
+            <td>{{fridgeItem.useBy|date:'dd/MM/yyyy'}}</td>
+            <td style="width:100px;text-align: center;">
+                <button class="btn btn-mini btn-danger" ng-click="removeFridgeItem(fridgeItem.id)">Remove</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<button class="btn btn-danger" ng-show="fridgeItems.length > 1" ng-click="removeAllFridgeItems()">Remove All FridgeItems</button>
+<hr />

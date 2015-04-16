@@ -1,0 +1,79 @@
+<div class="alert alert-error" ng-show="error">
+    {{errorMessage}}
+</div>
+
+<h3>FridgeItems List</h3>
+<div class="alert alert-info" ng-show="fridgeItems.length == 0">
+    No fridgeItems found
+</div>
+<table class="table table-bordered table-striped" ng-show="fridgeItems.length > 0">
+    <thead>
+        <tr>
+            <th style="text-align: center; width: 25px;">Id</th>
+            <th style="text-align: center;">Name</th>
+            <th style="text-align: center;">Amount</th>
+            <th style="text-align: center;">Unit</th>
+            <th style="text-align: center;">Use By</th>
+            <th style="text-align: center;">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="fridgeItem in fridgeItems | orderBy:predicate">
+            <td style="text-align: center;">{{fridgeItem.id}}</td>
+            <td>{{fridgeItem.item}}</td>
+            <td>{{fridgeItem.amount}}</td>
+            <td>{{fridgeItem.unit}}</td>
+            <td>{{fridgeItem.useBy|date:'dd/MM/yyyy'}}</td>
+            <td style="width:100px;text-align: center;">
+                <button class="btn btn-mini btn-danger" ng-click="removeFridgeItem(fridgeItem.id)">Remove</button>
+                <button class="btn btn-mini btn-success" ng-click="editFridgeItem(fridgeItem)">Edit</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<button class="btn btn-danger" ng-show="fridgeItems.length > 1" ng-click="removeAllFridgeItems()">Remove All FridgeItems</button>
+<hr />
+<form class="form-horizontal">
+    <div class="control-group">
+        <label class="control-label" for="inputEmail">FridgeItem</label>
+
+        <div class="controls">
+            <input type="text" id="inputEmail" ng-model="fridgeItem.item" placeholder="FridgeItem Name" required min="2">
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="inputAmount">Amount</label>
+
+        <div class="controls">
+            <input class="span3" type="text" id="inputAmount" ng-model="fridgeItem.amount" placeholder="Amount" required min="1">
+        </div>
+    </div>
+    
+    <div class="control-group">
+        <label class="control-label" for="inputUnit">Unit</label>
+
+        <div class="controls">
+            <input class="span3" type="text" id="inputUnit" ng-model="fridgeItem.unit" placeholder="OF,GRAMS,ML,SLICES" >
+        </div>
+    </div>
+    
+     <div class="control-group">
+        <label class="control-label" for="inputUseBy">Use By</label>
+
+        <div class="controls">
+            <input type="date" id="inputUseBy" ng-model="fridgeItem.useBy" placeholder="Use By in dd/MM/yyyy format" >
+        </div>
+        
+        
+        
+        
+    </div>
+    <div class="control-group">
+        <hr />
+        <div class="controls">
+            <button type="button" class="btn btn-primary" ng-disabled="!fridgeItem.item || !fridgeItem.amount" ng-hide="editMode" ng-click="addNewFridgeItem(fridgeItem)">Add FridgeItem</button>
+            <button type="button" class="btn btn-primary" ng-disabled="!fridgeItem.item || !fridgeItem.amount" ng-show="editMode" ng-click="updateFridgeItem(fridgeItem)">Save FridgeItem</button>
+            <button type="button" class="btn" ng-click="resetFridgeItemForm()">Reset</button>
+        </div>
+    </div>
+</form>

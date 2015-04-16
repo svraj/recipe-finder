@@ -1,0 +1,48 @@
+
+<div class="alert alert-error" ng-show="error">
+    {{errorMessage}}
+</div>
+
+<div class="alert alert-success" ng-show="showStatus">
+    {{statusMessage}}
+</div>
+
+<form class="form-horizontal">
+    <div class="control-group">
+        <div class="controls">
+           <h3>Input Recipe List</h3>
+            <textarea  style="width:50%" id="recipejson" ng-model="recipeJson" placeholder="Recipe JSON" required min="2">
+            </textarea>
+        </div>
+    </div>
+    
+    <div class="control-group">
+        <div class="controls">
+         	
+            <button type="button" class="btn btn-primary" ng-disabled="!recipeJson"  ng-click="submitRecipeJson(recipeJson)">Submit</button>
+           <button type="button" class="btn" ng-click="setSampleRecipeJson()">Load Dummy Data</button>
+        </div>
+    </div>
+	<hr />
+	
+	
+	
+	 <div class="control-group">
+
+        <div class="controls">
+        	<h3>Input Fridge Items CSV</h3>
+            <textarea style="width:50%" id="itemsCSV" ng-model="itemsCSV" placeholder="Fridge Items CSV" ></textarea>
+        </div>
+    </div>
+    
+    <div class="control-group">
+        <div class="controls">
+            <button type="button" class="btn btn-primary" ng-disabled="!itemsCSV" ng-hide="editMode" ng-click="submitFridgeItemCSV(itemsCSV)">Submit</button>
+        </div>
+    </div>
+	<hr />
+	
+	
+</form>
+
+

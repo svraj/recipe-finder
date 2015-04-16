@@ -1,0 +1,32 @@
+<div class="alert alert-error" ng-show="error">
+    {{errorMessage}}
+</div>
+
+<h3>Recipe List</h3>
+<div class="alert alert-info" ng-show="recipes.length == 0">
+    No Recipes found
+</div>
+<table class="table table-bordered table-striped" ng-show="recipes.length > 0">
+    <thead>
+        <tr>
+            <th style="text-align: center; width: 25px;">Id</th>
+            <th style="text-align: center;">Recipe Name</th>
+            <th style="text-align: center;">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="recipe in recipes | orderBy:predicate">
+            <td style="text-align: center;">{{recipe.id}}</td>
+            <td > <span style="color:blue"> {{recipe.name}} </span>
+             <div ng-repeat="ingredient in recipe.ingredients">
+            	{{ingredient.item}}-{{ingredient.amount}}-{{ingredient.unit}}
+            </div>
+            </td>
+            <td style="width:100px;text-align: center;">
+                <button class="btn btn-mini btn-danger" ng-click="removeRecipe(recipe.id)">Remove</button>
+                <button class="btn btn-mini btn-success" ng-click="editRecipe(recipe)">Edit</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<button class="btn btn-danger" ng-show="fridgeItems.length > 1" ng-click="removeAllFridgeItems()">Remove All FridgeItems</button>
