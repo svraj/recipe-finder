@@ -22,17 +22,23 @@ Use-By (date) = the use by date of the ingredient (dd/mm/yy)
 recipes json
 
 Array of recipes with format specified as below
+
 name : String
+
 ingredients[]
-item : String
-amount : int
-unit : enum
+--item : String
+--amount : int
+--unit : enum
 
 Notes:
 An ingredient that is past its use-by date will not be used for cooking.
 If more than one recipe is found, then preference will be given to the recipe with the closest use-by item
-If no recipe is found, the program will display “Order Takeout”
-Program is all-inclusive with a run script 
+If no recipe is found, the program will display “Order Takeout”.
+
+Program is all-inclusive with a 'launch-recipe-finder' script. This script launches the program in an Embedded Jetty Server. 
+By Default Port 8002 is used. (Change PORT_NUMBER field in RecipeFinderLauncher.java if needed)
+
+
 
 To Build:
 run mvn:clean install from project directory
