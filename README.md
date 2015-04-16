@@ -45,5 +45,6 @@ run mvn:clean install from project directory
 
 To Launch:
 Click or Run 'launch-recipe-finder.bat' file (for Windows)
+
 ./launch-recipe-finder.sh (for Linux)
 
